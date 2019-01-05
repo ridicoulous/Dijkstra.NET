@@ -33,7 +33,8 @@ namespace Dijkstra.NET.Graph
         {
             return (Node<T, TEdgeCustom>) graph[(uint)node];
         }
-        
+
+      
         /// <summary>
         /// Add node to graph
         /// </summary>
@@ -62,6 +63,34 @@ namespace Dijkstra.NET.Graph
             Node<T,TEdgeCustom> nodeFrom = _nodes[from];
             Node<T, TEdgeCustom> nodeTo = _nodes[to];
             
+            nodeTo.AddParent(nodeFrom);
+            nodeFrom.AddEdge(new Edge<T, TEdgeCustom>(nodeTo, cost, custom));
+
+            return true;
+        }
+        public uint GetNodeFirstKeyByValue(T value)
+        {
+            return _nodes.First(c => c.Value.Item.Equals(value)).Key;
+        }
+        /// <summary>
+        /// Connect node from with node to by its values
+        /// </summary>
+        /// <param name="from">First node</param>
+        /// <param name="to">Second node</param>
+        /// <param name="cost">Cost of connection</param>
+        /// <param name="custom">Information saved in edge</param>
+        /// <returns>Returns true if nodes connected</returns>
+        public bool Connect(T from, T to, int cost, TEdgeCustom custom)
+        {
+            uint fromId = GetNodeFirstKeyByValue(from);
+            uint toId = GetNodeFirstKeyByValue(to);
+
+            if (!_nodes.ContainsKey(fromId) || !_nodes.ContainsKey(toId))
+                return false;
+
+            Node<T, TEdgeCustom> nodeFrom = _nodes[fromId];
+            Node<T, TEdgeCustom> nodeTo = _nodes[toId];
+
             nodeTo.AddParent(nodeFrom);
             nodeFrom.AddEdge(new Edge<T, TEdgeCustom>(nodeTo, cost, custom));
 

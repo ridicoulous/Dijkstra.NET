@@ -13,6 +13,22 @@ namespace Dijkstra.Net40
 
             var immutablePath = graph.Dijkstra(1, 2);
             var immutablePathDescriptions = immutablePath.GetPathEdgesCustom(graph);
+
+
+            var graph2 = new Graph<string, string>();
+            graph2.AddNode("one");
+            graph2.AddNode("two");
+            graph2.AddNode("three");
+
+            graph2.Connect("one", "two", 1, "customm");
+            graph2.Connect("two", "three", 1, "customm2");
+
+            //var immutablePath = graph.Dijkstra(1, 2);
+
+
+            var nodeKey = graph2.GetNodeFirstKeyByValue("one");
+
+
         }
     }
 }
