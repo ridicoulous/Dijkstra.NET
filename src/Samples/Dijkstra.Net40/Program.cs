@@ -12,8 +12,7 @@ namespace Dijkstra.Net40
             bool connected = graph >> 1 >> 2 >> 5 ^ "edge information";
 
             var immutablePath = graph.Dijkstra(1, 2);
-            var immutablePathDescriptions = immutablePath.GetPathEdgesCustom(graph);
-
+            var immutablePathDescriptions = immutablePath.GetPathEdgesCustom(graph);            
 
             var graph2 = new Graph<string, string>();
             graph2.AddNode("one");

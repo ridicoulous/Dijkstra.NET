@@ -2,7 +2,7 @@
 
   <PropertyGroup>
     <TargetFrameworks>netstandard1.3;net40</TargetFrameworks>
-    <Version>1.2.1</Version>
+    <Version>1.2.1-pre</Version>
     <Authors>Mateusz Mazurek</Authors>
     <Company />
     <Description>Graph processing library.</Description>
